@@ -3,67 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/03 19:36:09 by mikim             #+#    #+#             */
-/*   Updated: 2017/03/04 03:10:55 by mikim            ###   ########.fr       */
+/*   Created: 2017/10/09 23:48:16 by mikim             #+#    #+#             */
+/*   Updated: 2017/10/14 13:30:45 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-static void	ft_strlen_nospaces(char *s, int *len, int *len2)
+static void	ft_strlen_nospaces(char *s, int *start, int *end)
 {
 	int	i;
 	int	j;
-	int	k;
-	int	res;
 
 	i = 0;
-	j = 0;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	while (s[j] != '\0')
-		j++;
-	res = j;
-	k = 0;
-	while (s[j - 1] == ' ' || s[j - 1] == '\n' || s[j - 1] == '\t')
-	{
-		j--;
-		k++;
-	}
-	res = res - i - k;
-	if (res > 0)
-		*len = res;
-	else
-		*len = 1;
-	*len2 = k;
+	j = -1;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t' ||
+			s[i] == '\v' || s[i] == '\f' || s[i] == '\r')
+		++i;
+	*start = i;
+	while (s[++j])
+		;
+	while (s[j - 1] == ' ' || s[j - 1] == '\n' || s[j - 1] == '\t' ||
+			s[j - 1] == '\v' || s[j - 1] == '\f' || s[j - 1] == '\r')
+		--j;
+	*end = j;
 }
 
 char		*ft_strtrim(char const *s)
 {
 	char	*r;
-	int		len;
-	int		len2;
 	int		i;
 	int		j;
+	int		k;
 
-	if (s == NULL)
-		return (0);
-	ft_strlen_nospaces((char*)s, &len, &len2);
-	r = (char*)malloc(sizeof(char) * (len + 1));
-	if (r == NULL)
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
-		i++;
-	while (s[i + len2] != '\0')
+	ft_strlen_nospaces((char*)s, &i, &j);
+	if (i >= j)
 	{
-		r[j] = s[i];
-		j++;
-		i++;
+		r = (char*)malloc(1);
+		r[0] = '\0';
+		return (r);
 	}
-	r[j] = '\0';
+	if (!(r = (char*)malloc(sizeof(char) * (j - i + 1))))
+		return (NULL);
+	k = -1;
+	while (i <= j)
+		r[++k] = s[i++];
+	r[k] = '\0';
 	return (r);
 }

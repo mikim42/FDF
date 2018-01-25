@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 20:55:02 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/03 20:55:03 by mikim            ###   ########.fr       */
+/*   Updated: 2018/01/25 11:59:42 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_alloc_error(int error)
 {
 	if (error == 0 || error == -1)
 	{
-		ft_putendl_fd("ALLOCATION FAILED", 2);
+		ft_printf("ALLOCATION FAILED\n");
 		exit(0);
 	}
 }
@@ -25,7 +25,7 @@ void	ft_map_error(int error)
 {
 	if (error == 0 || error == -1)
 	{
-		ft_putendl_fd("INVALID MAP", 2);
+		ft_printf("INVALID MAP\n");
 		exit(0);
 	}
 }
@@ -34,19 +34,19 @@ void	ft_error(int error)
 {
 	if (error == 0 || error == -1)
 	{
-		ft_putendl_fd("ERROR", 2);
+		ft_printf("ERROR\n");
 		exit(0);
 	}
 }
 
 void	ft_usage(void)
 {
-	ft_putendl("usage: ./fdf <MAP_FILE> [-h height] [-w width]");
-	ft_putendl("-w [600 - 1920]	specify window width");
-	ft_putendl("                default: 1280");
-	ft_putendl("-h [600 - 1280]	specify window height");
-	ft_putendl("                defalut: 1024");
-	ft_putendl("                \"./fdf --help\" for help");
+	ft_printf("usage: ./fdf <MAP_FILE> [-h height] [-w width]\n");
+	ft_printf("-w [600 - 1920]	specify window width\n");
+	ft_printf("                default: 1280\n");
+	ft_printf("-h [600 - 1280]	specify window height\n");
+	ft_printf("                defalut: 1024\n");
+	ft_printf("                \"./fdf --help\" for help\n");
 	exit(0);
 }
 

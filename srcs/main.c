@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 20:54:59 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/03 20:55:00 by mikim            ###   ########.fr       */
+/*   Updated: 2018/01/25 11:58:23 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_parse(t_env *e)
 		j = -1;
 		while (line[++j] != '\0')
 		{
-			ft_map_error((ft_isdigit(line[j]) || (line[j] > 64 && 71 > line[j])
+			ft_map_error((FT_ISNUM(line[j]) || (line[j] > 64 && 71 > line[j])
 			|| (line[j] > 96 && 103 > line[j]) || line[j] == ' ' ||
 			line[j] == ',' || line[j] == '-' || line[j] == 'x'));
 		}

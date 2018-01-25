@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/03 18:14:00 by mikim             #+#    #+#             */
-/*   Updated: 2017/03/04 01:32:42 by mikim            ###   ########.fr       */
+/*   Created: 2017/10/09 22:03:27 by mikim             #+#    #+#             */
+/*   Updated: 2017/10/14 13:28:55 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 void	ft_memdel(void **ap)
 {
@@ -19,5 +19,4 @@ void	ft_memdel(void **ap)
 		free(*ap);
 		*ap = NULL;
 	}
-	return ;
 }

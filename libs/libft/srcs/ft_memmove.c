@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/02 22:27:39 by mikim             #+#    #+#             */
-/*   Updated: 2017/03/02 22:47:04 by mikim            ###   ########.fr       */
+/*   Created: 2017/10/09 22:03:36 by mikim             #+#    #+#             */
+/*   Updated: 2017/10/14 13:28:58 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*tsrc;
-	char	*tdst;
+	char	*s1;
+	char	*s2;
 	size_t	i;
 
+	s1 = (char *)dst;
+	s2 = (char *)src;
 	i = -1;
-	tsrc = (char *)src;
-	tdst = (char *)dst;
-	if (tsrc < tdst)
-		while ((int)(--len) >= 0)
-			*(tdst + len) = *(tsrc + len);
-	else
+	if (s1 < s2)
 		while (++i < len)
-			*(tdst + i) = *(tsrc + i);
+			s1[i] = s2[i];
+	else
+		while ((int)(--len) >= 0)
+			s1[len] = s2[len];
 	return (dst);
 }
