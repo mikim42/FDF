@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/03 18:25:09 by mikim             #+#    #+#             */
-/*   Updated: 2017/03/04 02:19:09 by mikim            ###   ########.fr       */
+/*   Created: 2017/10/09 23:06:13 by mikim             #+#    #+#             */
+/*   Updated: 2017/10/14 13:30:06 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 void	ft_strdel(char **as)
 {
@@ -19,5 +19,4 @@ void	ft_strdel(char **as)
 		free(*as);
 		*as = NULL;
 	}
-	return ;
 }

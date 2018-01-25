@@ -6,13 +6,14 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 18:53:48 by mikim             #+#    #+#             */
-/*   Updated: 2017/03/22 04:14:12 by mikim            ###   ########.fr       */
+/*   Updated: 2018/01/06 14:33:23 by mikim            ###   ########.fr       */
+/*   Updated: 2017/11/17 20:55:47 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-int		ft_new_line(char **s, char **line, int fd, int ret)
+static int	ft_new_line(char **s, char **line, int fd, int ret)
 {
 	char	*tmp;
 	int		len;
@@ -26,19 +27,20 @@ int		ft_new_line(char **s, char **line, int fd, int ret)
 		tmp = ft_strdup(s[fd] + len + 1);
 		free(s[fd]);
 		s[fd] = tmp;
+		if (s[fd][0] == '\0')
+			ft_strdel(&s[fd]);
 	}
 	else if (s[fd][len] == '\0')
 	{
 		if (ret == BUFF_SIZE)
 			return (get_next_line(fd, line));
 		*line = ft_strdup(s[fd]);
-		free(s[fd]);
-		s[fd] = NULL;
+		ft_strdel(&s[fd]);
 	}
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static char	*s[255];
 	char		buf[BUFF_SIZE + 1];

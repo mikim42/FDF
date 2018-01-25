@@ -6,7 +6,7 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 20:55:05 by mikim             #+#    #+#             */
-/*   Updated: 2017/04/03 20:55:05 by mikim            ###   ########.fr       */
+/*   Updated: 2018/01/25 12:28:52 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_tab_z(t_env *e, char *line, int i)
 	j = -1;
 	x = 0;
 	ft_alloc_error((int)(e->pt[i] =
-	(t_point*)malloc(sizeof(t_point) * (e->g_x + 1))));
+	(t_point*)malloc(sizeof(t_point) * (e->m_x + 1))));
 	tmp = ft_strsplit(line, ' ');
 	while (tmp[++j] != NULL)
 	{

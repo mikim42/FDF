@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/02 16:05:15 by mikim             #+#    #+#             */
-/*   Updated: 2017/03/23 16:54:04 by mikim            ###   ########.fr       */
+/*   Created: 2017/10/07 16:06:31 by mikim             #+#    #+#             */
+/*   Updated: 2017/10/14 23:36:37 by mikim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 int		ft_atoi(const char *s)
 {
-	int	res;
-	int	np;
+	long	n;
+	int		np;
 
 	np = 1;
-	res = 0;
-	while (*s == '\t' || *s == '\v' || *s == '\f' ||
-			*s == '\r' || *s == '\n' || *s == ' ')
-		s++;
-	if (*s == '-')
-	{
-		np = -1;
-		s++;
-	}
-	else if (*s == '+')
-		s++;
+	n = 0;
+	while (*s == '\t' || *s == ' ' || *s == '\n' ||
+			*s == '\r' || *s == '\v' || *s == '\f')
+		++s;
+	*s == '-' ? np = -1 : 0;
+	*s == '-' || *s == '+' ? ++s : 0;
 	while (*s >= '0' && *s <= '9')
 	{
-		res *= 10;
-		res += *s - '0';
-		s++;
+		n *= 10;
+		n += *s - 48;
+		++s;
 	}
-	return (res *= np);
+	return ((int)n * np);
 }
